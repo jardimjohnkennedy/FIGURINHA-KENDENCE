@@ -36,7 +36,7 @@
             font-weight: bold;
             color: #ccc;
         }
-        .input-control select, .input-control input[type="text"] {
+        .input-control select, .input-control input[type="text"], .input-control input[type="number"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #555;
@@ -45,7 +45,7 @@
             color: white;
             font-size: 1em;
             box-sizing: border-box;
-            appearance: none; /* Remove estilo nativo em alguns navegadores */
+            appearance: none;
         }
         .atributo-grupo {
             display: flex;
@@ -64,102 +64,129 @@
         .atributo-grupo input[type="number"] {
             flex-basis: 25%;
             padding: 8px;
-            border: 1px solid #555;
-            border-radius: 4px;
             text-align: center;
             font-size: 1em;
-            background-color: #444;
-            color: white;
         }
-        /* --- ESTILO DA CARTA (CARD) DE JOGADOR --- */
+        /* --- ESTILO DA CARTA FUT --- */
         .card-preview {
-            margin: 30px auto;
-            width: 200px;
-            background-color: #e6b800;
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        .card-pos {
-            font-size: 0.7em;
-            font-weight: bold;
-        }
-        .card-banner {
-            background-color: #333;
-            color: white;
-            padding: 5px 0;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-bottom: 5px;
-            border-radius: 4px;
-        }
-        .card-photo-box {
-            background-color: #fff;
-            height: 150px;
-            border-radius: 8px;
-            margin-bottom: 5px;
+            position: relative;
+            margin: 20px auto;
+            width: 250px; 
+            height: 380px; 
             background-size: cover;
             background-position: center;
-            /* Placeholder para o fundo do time */
-            background-image: url('https://via.placeholder.com/200x150/000080/FFFFFF?text=FUNDO+TIME'); 
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+            color: #000; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; 
+            padding-bottom: 40px;  /* <---ALTURA DOS: PAC,SHO, PAS E ETC */
         }
-        .card-name {
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            z-index: 1; 
+        }
+        .card-overall {
+            position: absolute;
+            top: 45px;  /* <--- N° MEDIA-SOB-DESCE */
+            left: 20px;
+            font-size: 3.5em; 
+            font-weight: bold;
+            color: #333; 
+            z-index: 3;
+            line-height: 1; 
+        }
+        .card-pos-text {
+            position: absolute;
+            top: 105px;  /* <--- POSIÇÃO-SOB-DESCE */
+            left: 20px;
             font-size: 1.2em;
             font-weight: bold;
-            margin-top: 5px;
-            color: #333;
-            min-height: 1.2em; /* Para evitar pulo de layout */
+            color: #555; 
+            z-index: 3;
         }
-        .card-attributes {
+        /* [MODIFICADO] Bandeira Fixa */
+        .card-flag {
+            position: absolute;
+            top: 140px;  /* <--- BANDEIRA-SOB-DESCE */
+            left: 20px;
+            width: 40px; 
+            height: auto;
+            border-radius: 3px;
+            z-index: 3;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        /* [MODIFICADO] Brasão Fixo */
+        .card-club-logo {
+            position: absolute;
+            top: 180px; /* <--- BRASAO-SOB-DESCE */
+            left: 20px;
+            width: 50px; 
+            height: 50px;
+            object-fit: contain;
+            z-index: 3;
+        }
+        .card-player-photo {
+            position: absolute;
+            top: 60px; 
+            left: 50%;
+            transform: translateX(-50%); 
+            height: 215px;  /* <--- FOTO DO JOGADOR-SOB-DESCE */
+            width: auto;
+            object-fit: contain;
+            z-index: 2; 
+        }
+        .card-name-text {
+            position: relative; 
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px; 
+            z-index: 3;
+            text-transform: uppercase;
+        }
+        .card-attributes-fut {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 10px;
+            justify-content: center; 
+            margin-top: -5px;  /* <--- NOME DO JOGADOR-SOB-DESCE */
+            z-index: 3;
+            padding: 0 10px; 
         }
-        .card-attribute-item {
-            width: 50%;
+        .card-attribute-item-fut {
+            width: 45%; 
             text-align: left;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #333;
-            padding: 2px 0;
+            padding: 4px 0;
             display: flex;
             align-items: center;
+            justify-content: flex-start; 
         }
-        .attr-value {
+        .attr-value-fut {
             font-weight: bold;
             display: inline-block;
-            width: 30px;
+            width: 45px; 
             text-align: right;
             margin-right: 5px;
         }
-        .attr-label {
-            font-size: 0.8em;
+        .attr-label-fut {
+            font-size: 0.9em;
             font-weight: normal;
         }
-        /* --- ESTILO DA ÁREA DE CONFIRMAÇÃO --- */
-        #confirmacao-area {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #3a3a3a;
-            border-radius: 6px;
-            display: none;
-        }
+        /* --- BOTÕES --- */
         .btn-acao {
             display: block;
             width: 100%;
             padding: 12px;
             margin-top: 10px;
-            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
@@ -168,19 +195,95 @@
             transition: background-color 0.3s;
         }
         .btn-acao:hover {
-            background-color: #1e7e34;
+            opacity: 0.9;
         }
-        .btn-calcular {
+        .btn-salvar {
+            background-color: #28a745;
+        }
+        .btn-navegacao {
             background-color: #007bff;
         }
-        .btn-calcular:hover {
-            background-color: #0056b3;
+        .btn-perigo {
+            background-color: #dc3545;
+        }
+        /* --- BOTÃO ADMIN --- */
+        #btnAdmin {
+            background: #444;
+            color: #999;
+            border: 1px solid #555;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin: 20px auto 0;
+            display: block;
+        }
+        #btnAdmin:hover {
+            background: #555;
+            color: #fff;
+        }
+        /* --- PAINEL ADMIN MODAL --- */
+        #adminPanel {
+            display: none; 
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .admin-content {
+            background-color: #2c2c2c;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            color: white;
+        }
+        #historico-log {
+            height: 400px;
+            overflow-y: auto;
+            background: #1a1a1a;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .log-entry {
+            border-bottom: 1px solid #444;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+        .log-entry strong {
+            color: #e6b800;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div id="telaObrigado" style="display: none; text-align: center;">
+        <h1 style="color: #e6b800;">Obrigado pela Avaliação!</h1>
+        <h2 style="color: #ccc; font-size: 1.2em;">Estes foram os seus votos:</h2>
+        <div class="card-preview" id="card-resultado-voto"></div>
+        <p style="color: #999; font-style: italic;">Seu voto foi salvo com sucesso.</p>
+        <button id="btnVotarNovamente" class="btn-acao btn-navegacao">Votar Novamente</button>
+    </div>
+
+    <div id="adminPanel">
+        <div class="admin-content">
+            <h2>Painel de Administração</h2>
+            <h3>Histórico de Votos</h3>
+            <div id="historico-log"></div>
+            <button id="btnAdminZerarTUDO" class="btn-acao btn-perigo">Zerar TODOS os Votos (Médias e Histórico)</button>
+            <button id="btnFecharAdmin" class="btn-acao btn-navegacao" style="background-color: #555;">Fechar Painel</button>
+        </div>
+    </div>
+
+    <div class="container" id="containerPrincipal">
         <h1>Votação de Atributos</h1>
         <h2 style="color: #ccc; font-size: 1.2em;">Escolha o jogador e avalie!</h2>
 
@@ -188,28 +291,10 @@
             <label for="selecao-jogador">Escolha o Jogador a ser Avaliado:</label>
             <select id="selecao-jogador" onchange="atualizarPreview()">
                 <option value="" disabled selected>--- Selecione um jogador ---</option>
-                </select>
+            </select>
         </div>
 
-        <div class="card-preview" id="card-preview">
-            <div class="card-header">
-                <span id="card-overall">??</span>
-                <span class="card-pos" id="card-pos">POS</span>
-            </div>
-            <div class="card-banner">CAMPEONATO PURO SANGUE</div>
-            <div class="card-photo-box" id="card-photo-box">
-                </div>
-            <div class="card-name" id="card-nome">Selecione um jogador</div>
-
-            <div class="card-attributes">
-                <div class="card-attribute-item"><span class="attr-value" id="disp-pac">50</span> <span class="attr-label">PAC</span></div>
-                <div class="card-attribute-item"><span class="attr-value" id="disp-dri">50</span> <span class="attr-label">DRI</span></div>
-                <div class="card-attribute-item"><span class="attr-value" id="disp-sho">50</span> <span class="attr-label">SHO</span></div>
-                <div class="card-attribute-item"><span class="attr-value" id="disp-def">50</span> <span class="attr-label">DEF</span></div>
-                <div class="card-attribute-item"><span class="attr-value" id="disp-pas">50</span> <span class="attr-label">PAS</span></div>
-                <div class="card-attribute-item"><span class="attr-value" id="disp-phy">50</span> <span class="attr-label">PHY</span></div>
-            </div>
-        </div>
+        <div class="card-preview" id="card-preview"></div>
 
         <form id="formularioVotacao">
             <h2>Notas (20 a 100)</h2>
@@ -220,55 +305,89 @@
             <div class="atributo-grupo"><label for="def">DEF (Defesa):</label><input type="number" id="def" name="def" min="20" max="100" value="50" required onchange="atualizarPreview()"></div>
             <div class="atributo-grupo"><label for="phy">PHY (Físico):</label><input type="number" id="phy" name="phy" min="20" max="100" value="50" required onchange="atualizarPreview()"></div>
 
-            <button type="submit" class="btn-acao btn-calcular">Finalizar Votação e Enviar</button>
+            <hr style="border-color: #555; margin-top: 25px; margin-bottom: 20px;">
+            
+            <div class="input-control">
+                <label for="nome-votante">Seu Nome:</label>
+                <input type="text" id="nome-votante" placeholder="Seu nome completo" required>
+            </div>
+            <div class="input-control">
+                <label for="apelido-votante">Seu Apelido:</label>
+                <input type="text" id="apelido-votante" placeholder="Seu apelido no campeonato" required>
+            </div>
+
+            <button type="submit" class="btn-acao btn-salvar">Salvar Votação</button>
         </form>
 
-        <div id="confirmacao-area">
-            <h2>Quase lá! Confirme seus dados.</h2>
-            <p>Seus votos serão enviados para o administrador via WhatsApp.</p>
-            
-            <label for="nome-votante" style="display: block; margin-bottom: 5px;">Seu Nome:</label>
-            <input type="text" id="nome-votante" placeholder="Seu nome completo" required>
-            
-            <label for="apelido-votante" style="display: block; margin-bottom: 5px;">Seu Apelido:</label>
-            <input type="text" id="apelido-votante" placeholder="Seu apelido no campeonato" required>
-
-            <button id="btn-whatsapp" class="btn-acao">
-                CONFIRMAR E ENVIAR VOTO (WhatsApp)
-            </button>
-        </div>
-
+        <button id="btnAdmin">Administração</button>
     </div>
 
     <script>
-        const numeroWhatsapp = "5543984399533"; // Número do Destinatário no formato DDI DDD Número
+        const CHAVE_STORAGE_MEDIAS = 'votacoesPuroSangue_MEDIAS';
+        const CHAVE_STORAGE_HISTORICO = 'votacoesPuroSangue_HISTORICO';
 
-        // --- DADOS DOS JOGADORES (AQUI VOCÊ EDITA AS POSIÇÕES E FOTOS) ---
+        // --- DADOS DOS JOGADORES (Simplificado: sem nacionalidade e clube) ---
         const JOGADORES_DATA = {
-            'Gustavo': { pos: 'TEC', foto: 'https://lh3.googleusercontent.com/d/1Atpzw-JGpITkLgl0LwAA4wxOt7vyCOY-' },
-            'Vinicios': { pos: 'AUX', foto: 'https://lh3.googleusercontent.com/d/1hrY4voJHk3oC2bKIxpaQLbu7daFJVX_S' },
-            'Luan': { pos: 'AUX', foto: 'https://lh3.googleusercontent.com/d/1UYi3T1kZ-ZF8TVIcOje6bC-fnh8821Yq' },
-            'Yoshi': { pos: 'DIR', foto: 'https://lh3.googleusercontent.com/d/1uCGv7vaq4kv0BocSXC0CpE1VP-Z5jfrP' },
-            'Lukas Pacini': { pos: 'GOL', foto: 'https://lh3.googleusercontent.com/d/1_tU5gkSUwZyLAtYoEdKqh4DLNZEcivf-' },
-            'Pedro': { pos: 'GOL', foto: 'https://lh3.googleusercontent.com/d/1kjJs7sFMgTPCvbSqteGJXCTXmer7jHCj' },
-            'Valdir': { pos: 'Z.VL', foto: 'https://lh3.googleusercontent.com/d/1yFEpaGeRO_7mrC9fZUstZlYXCk0kluAd' },
-            'Matheus': { pos: 'Z.VL', foto: 'https://lh3.googleusercontent.com/d/1P626SpshWdV-uupbciidoRpNq2Kedo6A' },
-            'Hiago': { pos: 'Z.VL', foto: 'https://lh3.googleusercontent.com/d/1fl0mcbjEfpfULKGsu9RtTQPgEFh-8l19' },
-            'Douglas': { pos: 'Z.VL', foto: 'https://lh3.googleusercontent.com/d/1EtkfiQs4jzjHKH-SZuru-W4AlAEIyp-2' },
-            'Edilson': { pos: 'L', foto: 'https://lh3.googleusercontent.com/d/1iGPZHvm6UArlf6L5xh2WVIoCVbS5eDCu' },
-            'Rafinha': { pos: 'L', foto: 'https://lh3.googleusercontent.com/d/1QlmybXTj9Bl6LWX_7XNhtpBqfE0SzNfu' },
-            'Edmar': { pos: 'L', foto: 'https://lh3.googleusercontent.com/d/1tUfBbm4y0kKsjp-1Ts34XZMl2JzGzvD6' },
-            'Bruno': { pos: 'L', foto: 'https://lh3.googleusercontent.com/d/11B-L0UHRXW8MJsaZ6nyel-WzFeSr3tDo' },
-            'Thiago': { pos: 'L', foto: 'https://lh3.googleusercontent.com/d/1SnLBEcv09NjJv9AOaP8G-lL7gYHDfZwE' },
-            'Brendon Stork': { pos: 'MEI', foto: 'https://lh3.googleusercontent.com/d/1YCuNcv0m7amKqeRd9GRHjQ0v2BP2j4_a' },
-            'Gabriel Storck': { pos: 'MEI', foto: 'https://lh3.googleusercontent.com/d/1TG-4wS1Melq5TFWE1bjcs2YT5NoruHfM' },
-            'Léo L10': { pos: 'MEI', foto: 'https://lh3.googleusercontent.com/d/1M5M1n9oJ32DFOeBHZVFc6lCwjxU8dIcn' },
-            'Bruno Henrrique': { pos: 'ATA', foto: 'https://lh3.googleusercontent.com/d/1Q6XN9qM0povE1E9foQRsbAx2hGZq251U' },
-            'Juca': { pos: 'ATA', foto: 'https://lh3.googleusercontent.com/d/1gDEc0xlddV-jN3iu3tKkcleyj2zM88i8' }
-            // ADICIONE MAIS JOGADORES AQUI SE NECESSÁRIO
+            'Gustavo': { pos: 'TEC', foto: 'assets/players/gustavo.png' },
+            'Vinicios': { pos: 'AUX', foto: 'assets/players/vinicios.png' },
+            'Luan': { pos: 'AUX', foto: 'assets/players/luan.png' },
+            'Yoshi': { pos: 'DIR', foto: 'assets/players/yoshi.png' },
+            'Lukas Pacini': { pos: 'GOL', foto: 'assets/players/lukas.png' },
+            'Pedro': { pos: 'GOL', foto: 'assets/players/pedro.png' },
+            'Valdir': { pos: 'Z.VL', foto: 'assets/players/valdir.png' },
+            'Matheus': { pos: 'Z.VL', foto: 'assets/players/matheus.png' },
+            'Hiago': { pos: 'Z.VL', foto: 'assets/players/hiago.png' },
+            'Douglas': { pos: 'Z.VL', foto: 'assets/players/douglas.png' },
+            'Edilson': { pos: 'L', foto: 'assets/players/edilson.png' },
+            'Rafinha': { pos: 'L', foto: 'assets/players/rafinha.png' },
+            'Edmar': { pos: 'L', foto: 'assets/players/edmar.png' },
+            'Bruno': { pos: 'L', foto: 'assets/players/bruno.png' },
+            'Thiago': { pos: 'L', foto: 'assets/players/thiago.png' },
+            'Brendon Stork': { pos: 'MEI', foto: 'assets/players/brendon.png' },
+            'Gabriel Storck': { pos: 'MEI', foto: 'assets/players/gabriel.png' },
+            'Léo L10': { pos: 'MEI', foto: 'assets/players/leo.png' },
+            'Bruno Henrrique': { pos: 'ATA', foto: 'assets/players/brunohenrrique.png' },
+            'Juca': { pos: 'ATA', foto: 'assets/players/juca.png' }
         };
         
-        // Função para popular o dropdown com os nomes dos jogadores
+        // --- [MODIFICADO] Mapeamentos removidos ---
+        // (Não precisamos mais de CLUBE_LOGOS ou NACIONALIDADE_BANDEIRAS)
+
+// Função para obter o caminho da imagem de fundo do card
+        function getCardBackground(overall) {
+            // Conforme solicitado, a página de votação usa sempre o card base 50.png
+            return 'assets/card_backgrounds/50.png';
+        }
+
+        // [MODIFICADO] Função para gerar o HTML da carta (com imagens fixas)
+        function gerarCardHTML(overall, pos, nomeJogador, fotoJogador, pac, sho, pas, dri, def, phy) {
+            const cardBg = getCardBackground(overall);
+            
+            // [FIXO] Caminhos diretos para as imagens do campeonato
+            const flagSrc = 'assets/bandeira_campeonato.png';
+            const clubLogoSrc = 'assets/brasao_campeonato.png';
+
+            return `
+                <img src="${cardBg}" alt="Card Background" class="card-background">
+                <span class="card-overall">${overall || '??'}</span>
+                <span class="card-pos-text">${pos || 'POS'}</span>
+                <img src="${flagSrc}" alt="Bandeira do Campeonato" class="card-flag">
+                <img src="${clubLogoSrc}" alt="Brasão do Campeonato" class="card-club-logo">
+                <img src="${fotoJogador || 'https://via.placeholder.com/150/000080/FFFFFF?text=JOGADOR'}" alt="${nomeJogador || ''}" class="card-player-photo">
+                <div class="card-name-text">${nomeJogador || 'Selecione um jogador'}</div>
+                <div class="card-attributes-fut">
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${pac || '??'}</span> <span class="attr-label-fut">PAC</span></div>
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${dri || '??'}</span> <span class="attr-label-fut">DRI</span></div>
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${sho || '??'}</span> <span class="attr-label-fut">SHO</span></div>
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${def || '??'}</span> <span class="attr-label-fut">DEF</span></div>
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${pas || '??'}</span> <span class="attr-label-fut">PAS</span></div>
+                    <div class="card-attribute-item-fut"><span class="attr-value-fut">${phy || '??'}</span> <span class="attr-label-fut">PHY</span></div>
+                </div>
+            `;
+        }
+
+
+        // Função para popular o dropdown
         function popularJogadores() {
             const select = document.getElementById('selecao-jogador');
             for (const nome in JOGADORES_DATA) {
@@ -279,26 +398,17 @@
             }
         }
 
-        // Função para atualizar a pré-visualização da carta
+        // [MODIFICADO] Função para atualizar a pré-visualização da carta
         function atualizarPreview() {
             const nomeSelecionado = document.getElementById('selecao-jogador').value;
             const dadosJogador = JOGADORES_DATA[nomeSelecionado];
+            const cardPreview = document.getElementById('card-preview');
 
-            // 1. Atualiza a carta com dados do jogador
-            if (dadosJogador) {
-                document.getElementById('card-nome').textContent = nomeSelecionado;
-                document.getElementById('card-pos').textContent = dadosJogador.pos;
-                document.getElementById('card-photo-box').style.backgroundImage = `url('${dadosJogador.foto}')`;
-            } else {
-                // Se nenhum jogador for selecionado
-                document.getElementById('card-nome').textContent = 'Selecione um jogador';
-                document.getElementById('card-pos').textContent = 'POS';
-                document.getElementById('card-overall').textContent = '??';
-                document.getElementById('card-photo-box').style.backgroundImage = `url('https://via.placeholder.com/200x150/000080/FFFFFF?text=FUNDO+TIME')`;
+            if (!dadosJogador) {
+                cardPreview.innerHTML = gerarCardHTML(null, null, null, null, null, null, null, null, null, null);
+                return;
             }
 
-
-            // 2. Atualiza os atributos de nota na carta
             const pac = parseInt(document.getElementById('pac').value) || 0;
             const sho = parseInt(document.getElementById('sho').value) || 0;
             const pas = parseInt(document.getElementById('pas').value) || 0;
@@ -308,18 +418,15 @@
 
             const atributos = [pac, sho, pas, dri, def, phy];
             const somaAtributos = atributos.reduce((a, b) => a + b, 0);
-            
-            // Cálculo do Overall (Média arredondada)
             const overall = atributos.filter(v => v > 0).length > 0 ? Math.round(somaAtributos / atributos.filter(v => v > 0).length) : 0;
             
-            document.getElementById('card-overall').textContent = overall || '??';
-
-            document.getElementById('disp-pac').textContent = pac || '??';
-            document.getElementById('disp-sho').textContent = sho || '??';
-            document.getElementById('disp-pas').textContent = pas || '??';
-            document.getElementById('disp-dri').textContent = dri || '??';
-            document.getElementById('disp-def').textContent = def || '??';
-            document.getElementById('disp-phy').textContent = phy || '??';
+            cardPreview.innerHTML = gerarCardHTML(
+                overall,
+                dadosJogador.pos,
+                nomeSelecionado,
+                dadosJogador.foto,
+                pac, sho, pas, dri, def, phy
+            );
         }
 
         // Inicializa a lista de jogadores e a pré-visualização
@@ -328,17 +435,23 @@
             atualizarPreview();
         });
 
-        // Ação ao finalizar a votação
+        // Ação ao ENVIAR O FORMULÁRIO
         document.getElementById('formularioVotacao').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); 
             
             const nomeSelecionado = document.getElementById('selecao-jogador').value;
+            const nomeVotante = document.getElementById('nome-votante').value.trim();
+            const apelidoVotante = document.getElementById('apelido-votante').value.trim();
+
             if (!nomeSelecionado) {
                 alert('Por favor, selecione o jogador que você está avaliando.');
                 return;
             }
-
-            // Verifica a validação
+            if (nomeVotante === "" || apelidoVotante === "") {
+                alert("Por favor, preencha seu Nome e Apelido para registrar o voto.");
+                return;
+            }
+            
             const inputs = document.querySelectorAll('#formularioVotacao input[type="number"]');
             let valido = true;
             inputs.forEach(input => {
@@ -348,88 +461,168 @@
                 }
             });
 
-            if (valido) {
-                // Esconde o formulário de votação e mostra a área de confirmação
-                document.getElementById('formularioVotacao').style.display = 'none';
-                document.getElementById('confirmacao-area').style.display = 'block';
-            } else {
-                alert('Por favor, insira valores entre 20 e 100 em todos os atributos.');
-            }
-        });
-
-        // Ação ao CONFIRMAR e ENVIAR WHATSAPP
-        document.getElementById('btn-whatsapp').addEventListener('click', function() {
-            const nomeVotante = document.getElementById('nome-votante').value.trim();
-            const apelidoVotante = document.getElementById('apelido-votante').value.trim();
-            const nomeJogador = document.getElementById('selecao-jogador').value;
-            const dadosJogador = JOGADORES_DATA[nomeJogador];
-
-            if (nomeVotante === "" || apelidoVotante === "") {
-                alert("Por favor, preencha seu nome e apelido.");
-                return;
-            }
-            if (!nomeJogador || !dadosJogador) {
-                 alert("Por favor, selecione um jogador para votar.");
+            if (!valido) {
+                 alert('Por favor, insira valores entre 20 e 100 em todos os atributos.');
                  return;
             }
 
-            const pac = document.getElementById('pac').value;
-            const sho = document.getElementById('sho').value;
-            const pas = document.getElementById('pas').value;
-            const dri = document.getElementById('dri').value;
-            const def = document.getElementById('def').value;
-            const phy = document.getElementById('phy').value;
+            const dadosJogador = JOGADORES_DATA[nomeSelecionado];
+            const pac = parseInt(document.getElementById('pac').value);
+            const sho = parseInt(document.getElementById('sho').value);
+            const pas = parseInt(document.getElementById('pas').value);
+            const dri = parseInt(document.getElementById('dri').value);
+            const def = parseInt(document.getElementById('def').value);
+            const phy = parseInt(document.getElementById('phy').value);
             
-            // Recálculo do Overall
-            const atributos = [pac, sho, pas, dri, def, phy].map(Number);
+            const atributos = [pac, sho, pas, dri, def, phy];
             const somaAtributos = atributos.reduce((a, b) => a + b, 0);
             const overall = Math.round(somaAtributos / atributos.length);
+            const votoAtual = { pac, sho, pas, dri, def, phy };
 
-            // Montagem da mensagem
-            const mensagem = `
-            *VOTO CAMPEONATO PURO SANGUE*
-            
-            *Votante:* ${nomeVotante} (Apelido: ${apelidoVotante})
-            
-            ---
-            
-            *JOGADOR AVALIADO:* ${nomeJogador}
-            *POSIÇÃO:* ${dadosJogador.pos}
-            
-            *Média Final da Carta (Overall):* ${overall}
-            
-            *Notas Avaliadas:*
-            
-            PAC: ${pac}
-            SHO: ${sho}
-            PAS: ${pas}
-            DRI: ${dri}
-            DEF: ${def}
-            PHY: ${phy}
-            
-            Voto enviado com sucesso!
-            `.trim();
-            
-            // Codificação da mensagem para URL
-            const mensagemEncoded = encodeURIComponent(mensagem);
+            // 1. Salvar para as Médias
+            salvarVotoParaMedia(nomeSelecionado, dadosJogador, votoAtual);
 
-            // Link de envio do WhatsApp
-            const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensagemEncoded}`;
+            // 2. Salvar no Histórico
+            salvarVotoNoHistorico(nomeVotante, apelidoVotante, nomeSelecionado, votoAtual, overall);
+
+            // 3. Mostrar Tela de Obrigado
+            mostrarTelaObrigado(nomeSelecionado, dadosJogador, votoAtual, overall);
+        });
+
+        // (Modificada) Salva o voto para a página de MÉDIAS
+        function salvarVotoParaMedia(nomeJogador, dadosBase, novosVotos) {
+            let votacoes = JSON.parse(localStorage.getItem(CHAVE_STORAGE_MEDIAS)) || {};
+            if (!votacoes[nomeJogador]) {
+                votacoes[nomeJogador] = {
+                    totalVotos: 0,
+                    somaNotas: { pac: 0, sho: 0, pas: 0, dri: 0, def: 0, phy: 0 },
+                    dadosBase: dadosBase // Salva a foto e pos
+                };
+            }
+            const dados = votacoes[nomeJogador];
+            dados.totalVotos++;
+            dados.somaNotas.pac += novosVotos.pac;
+            dados.somaNotas.sho += novosVotos.sho;
+            dados.somaNotas.pas += novosVotos.pas;
+            dados.somaNotas.dri += novosVotos.dri;
+            dados.somaNotas.def += novosVotos.def;
+            dados.somaNotas.phy += novosVotos.phy;
+            localStorage.setItem(CHAVE_STORAGE_MEDIAS, JSON.stringify(votacoes));
+        }
+
+        // Salva o voto individual no HISTÓRICO
+        function salvarVotoNoHistorico(nomeVotante, apelidoVotante, nomeJogador, notas, overall) {
+            let historico = JSON.parse(localStorage.getItem(CHAVE_STORAGE_HISTORICO)) || [];
             
-            // Abre o WhatsApp
-            window.open(urlWhatsapp, '_blank');
-            
-            alert("Voto processado! Confirme o envio da mensagem no WhatsApp que será aberto.");
-            
-            // Limpa o formulário e retorna ao início
+            const novoRegistro = {
+                votante: `${nomeVotante} (${apelidoVotante})`,
+                jogador: nomeJogador,
+                overall: overall,
+                notas: notas,
+                data: new Date().toLocaleString("pt-BR")
+            };
+
+            historico.push(novoRegistro);
+            localStorage.setItem(CHAVE_STORAGE_HISTORICO, JSON.stringify(historico));
+        }
+
+        // [MODIFICADO] Mostra a tela de "Obrigado"
+        function mostrarTelaObrigado(nomeJogador, dadosJogador, notas, overall) {
+            const cardResultadoVoto = document.getElementById('card-resultado-voto');
+            cardResultadoVoto.innerHTML = gerarCardHTML(
+                overall,
+                dadosJogador.pos,
+                nomeJogador,
+                dadosJogador.foto,
+                notas.pac, notas.sho, notas.pas, notas.dri, notas.def, notas.phy
+            );
+
+            document.getElementById('containerPrincipal').style.display = 'none';
+            document.getElementById('telaObrigado').style.display = 'block';
+        }
+
+        // Ação do botão "Votar Novamente"
+        document.getElementById('btnVotarNovamente').addEventListener('click', function() {
+            document.getElementById('telaObrigado').style.display = 'none';
+            document.getElementById('containerPrincipal').style.display = 'block';
+
             document.getElementById('formularioVotacao').reset();
             document.getElementById('nome-votante').value = '';
             document.getElementById('apelido-votante').value = '';
             document.getElementById('selecao-jogador').selectedIndex = 0;
-            atualizarPreview(); // Reseta a pré-visualização
-            document.getElementById('formularioVotacao').style.display = 'block';
-            document.getElementById('confirmacao-area').style.display = 'none';
+            atualizarPreview();
         });
+
+        // --- LÓGICA DO PAINEL ADMIN (Sem mudança) ---
+        document.getElementById('btnAdmin').addEventListener('click', function() {
+            const login = prompt("Login (Admin):");
+            if (login === null) return;
+            const senha = prompt("Senha (Admin):");
+            if (senha === null) return;
+
+            if (login === "figurinha" && senha === "f12345") {
+                abrirAdminPanel();
+            } else {
+                alert("Login ou senha incorretos.");
+            }
+        });
+
+        function abrirAdminPanel() {
+            document.getElementById('containerPrincipal').style.display = 'none';
+            document.getElementById('telaObrigado').style.display = 'none';
+            popularHistoricoVotos();
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function fecharAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('containerPrincipal').style.display = 'block';
+            document.getElementById('formularioVotacao').reset();
+            document.getElementById('nome-votante').value = '';
+            document.getElementById('apelido-votante').value = '';
+            document.getElementById('selecao-jogador').selectedIndex = 0;
+            atualizarPreview();
+        }
+        document.getElementById('btnFecharAdmin').addEventListener('click', fecharAdminPanel);
+
+        function popularHistoricoVotos() {
+            const logContainer = document.getElementById('historico-log');
+            logContainer.innerHTML = '';
+            const historico = JSON.parse(localStorage.getItem(CHAVE_STORAGE_HISTORICO)) || [];
+
+            if (historico.length === 0) {
+                logContainer.innerHTML = '<p>Nenhum voto registrado no histórico.</p>';
+                return;
+            }
+
+            historico.slice().reverse().forEach(voto => {
+                const entry = document.createElement('div');
+                entry.className = 'log-entry';
+                entry.innerHTML = `
+                    <strong>Votante:</strong> ${voto.votante} | <strong>Data:</strong> ${voto.data} <br>
+                    <strong>Jogador:</strong> ${voto.jogador} (Overall: ${voto.overall}) <br>
+                    <strong>Notas:</strong> 
+                    PAC: ${voto.notas.pac}, 
+                    SHO: ${voto.notas.sho}, 
+                    PAS: ${voto.notas.pas}, 
+                    DRI: ${voto.notas.dri}, 
+                    DEF: ${voto.notas.def}, 
+                    PHY: ${voto.notas.phy}
+                `;
+                logContainer.appendChild(entry);
+            });
+        }
+
+        document.getElementById('btnAdminZerarTUDO').addEventListener('click', function() {
+            const certeza = confirm("TEM CERTEZA?\n\nIsso vai apagar PERMANENTEMENTE todo o HISTÓRICO de votos e todas as MÉDIAS salvas.");
+            if (certeza) {
+                localStorage.removeItem(CHAVE_STORAGE_MEDIAS);
+                localStorage.removeItem(CHAVE_STORAGE_HISTORICO);
+                alert("Todos os dados de votação foram zerados!");
+                popularHistoricoVotos();
+            }
+        });
+        
     </script>
 
 </body>
